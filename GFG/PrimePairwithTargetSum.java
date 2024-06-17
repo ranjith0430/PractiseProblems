@@ -18,7 +18,6 @@ Constraints:
 */
 //{ Driver Code Starts
     import java.io.*;
-    import java.util.*;
     import java.util.ArrayList;
     
     class IntArray {
@@ -52,7 +51,7 @@ Constraints:
                 n = Integer.parseInt(br.readLine());
     
                 Solution obj = new Solution();
-                ArrayList<Integer> res = obj.getPrimes(n);
+                ArrayList<Integer> res = Solution.getPrimes(n);
     
                 IntArray.print(res);
             }
