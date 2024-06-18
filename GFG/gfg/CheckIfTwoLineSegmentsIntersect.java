@@ -17,38 +17,45 @@
  */
 
 // Initial Template for Java
-
+package gfg;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-class GFG {
-    public static void main(String args[]) throws IOException {
+public class CheckIfTwoLineSegmentsIntersect {
+    public static void main(String[] args) throws IOException {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine());
         while (t-- > 0) {
-            int p1[] = new int[2];
-            int q1[] = new int[2];
-            int p2[] = new int[2];
-            int q2[] = new int[2];
-            String S1[] = read.readLine().split(" ");
-            p1[0] = Integer.parseInt(S1[0]);
-            p1[1] = Integer.parseInt(S1[1]);
-            q1[0] = Integer.parseInt(S1[2]);
-            q1[1] = Integer.parseInt(S1[3]);
-            String S2[] = read.readLine().split(" ");
-            p2[0] = Integer.parseInt(S2[0]);
-            p2[1] = Integer.parseInt(S2[1]);
-            q2[0] = Integer.parseInt(S2[2]);
-            q2[1] = Integer.parseInt(S2[3]);
+            int[] p1 = new int[2];
+            int[] q1 = new int[2];
+            int[] p2 = new int[2];
+            int[] q2 = new int[2];
+            String[] firstLine = read.readLine().split(" ");
+            p1[0] = Integer.parseInt(firstLine[0]);
+            p1[1] = Integer.parseInt(firstLine[1]);
+            q1[0] = Integer.parseInt(firstLine[2]);
+            q1[1] = Integer.parseInt(firstLine[3]);
+            String[] secondLine = read.readLine().split(" ");
+            p2[0] = Integer.parseInt(secondLine[0]);
+            p2[1] = Integer.parseInt(secondLine[1]);
+            q2[0] = Integer.parseInt(secondLine[2]);
+            q2[1] = Integer.parseInt(secondLine[3]);
             Solution ob = new Solution();
             String ans = ob.doIntersect(p1, q1, p2, q2);
-            System.out.println(ans);
+            LogManager lgmngr = LogManager.getLogManager(); 
+  
+            // lgmngr now contains a reference to the log manager. 
+            Logger logger = lgmngr.getLogger(Logger.GLOBAL_LOGGER_NAME); 
+            logger.log(Level.INFO, "output: {}",ans);
         }
     }
 }
 // } Driver Code Ends
 
 class Solution {
-    String doIntersect(int p1[], int q1[], int p2[], int q2[]) {
+    String doIntersect(int[] p1, int[] q1, int[] p2, int[] q2) {
         // code here
         /*
          * Strategy is to find slopes of two segments and check whether they are same or not, if same, then return

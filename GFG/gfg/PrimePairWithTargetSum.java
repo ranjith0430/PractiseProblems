@@ -17,10 +17,20 @@ Constraints:
 2 <= n <= 106
 */
 //{ Driver Code Starts
-    import java.io.*;
-    import java.util.ArrayList;
+package gfg;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
     
     class IntArray {
+        IntArray(){}
+        static LogManager lgmngr = LogManager.getLogManager();
+
+        // // lgmngr now contains a reference to the log manager.
+        static Logger logger = lgmngr.getLogger(Logger.GLOBAL_LOGGER_NAME);
         public static int[] input(BufferedReader br, int n) throws IOException {
             String[] s = br.readLine().trim().split(" ");
             int[] a = new int[n];
@@ -30,17 +40,16 @@ Constraints:
         }
     
         public static void print(int[] a) {
-            for (int e : a) System.out.print(e + " ");
-            System.out.println();
+            for (int e : a) logger.log(Level.INFO, "{} ",e);
         }
     
-        public static void print(ArrayList<Integer> a) {
-            for (int e : a) System.out.print(e + " ");
-            System.out.println();
+        public static void print(List<Integer> a) {
+            for (int e : a) logger.log(Level.INFO, "{} ",e);
         }
     }
     
-    class GFG {
+   public class PrimePairWithTargetSum {
+
         public static void main(String[] args) throws IOException {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             int t;
@@ -49,9 +58,7 @@ Constraints:
     
                 int n;
                 n = Integer.parseInt(br.readLine());
-    
-                Solution obj = new Solution();
-                ArrayList<Integer> res = Solution.getPrimes(n);
+                List<Integer> res = Solution.getPrimes(n);
     
                 IntArray.print(res);
             }
@@ -62,6 +69,9 @@ Constraints:
     
     
     class Solution {
+        Solution(){
+
+        }
         public static boolean isPrime(int num){
             // returns true if number is prime otherwise false
             if(num<2){
@@ -74,14 +84,14 @@ Constraints:
             }
             return true;
         }
-        public static ArrayList<Integer> getPrimes(int n) {
+        public static List<Integer> getPrimes(int n) {
             // code here
             /* Divided the number list till n into two halves and considered the first half
              * checked the each number in the list and n-i is prime or not if so, then considered minimum value as i
              * if no primes are found then added -1,-1 to the result set otherwise the identified primes whose sum is equal to n
              * by considering least prime number as i.
              */
-            ArrayList<Integer> result=new ArrayList<>();
+            List<Integer> result=new ArrayList<>();
             int min=n;
             for(int i=2;i<=(n/2);i++){
                 if(isPrime(i) && isPrime(n-i) && i<=min){
@@ -98,4 +108,3 @@ Constraints:
             return result;
         }
     }
-    
