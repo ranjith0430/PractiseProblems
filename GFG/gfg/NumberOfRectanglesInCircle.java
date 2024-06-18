@@ -29,8 +29,7 @@ class Solution {
     int rectanglesInCircle(int r) {
         // code here
         /*
-         * rectangle can be fit in a circle only when each side of rectangle
-         * length is less than or equal to the diameter of circle
+         * rectangle can be fit in a circle only when each side of rectangle is less than or equal to the diameter of circle
          * (length)^2+(breadth)^2<=(2*radius)^2
          */
         int count = 0;
